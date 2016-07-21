@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 
 @section('content')
 <div class="container">  
@@ -17,7 +18,11 @@
                     <a href="{{ url('admin/seat') }}" class="btn btn-lg btn-success col-xs-12">管理座位</a>
 
                 </div>
-            </div>
+                <div class="panel-body">
+
+                    <a href="{{ url('admin/type') }}" class="btn btn-lg btn-success col-xs-12">管理菜品分类</a>
+
+                </div>
         </div>
     </div>
 </div>  

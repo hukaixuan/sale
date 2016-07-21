@@ -11,6 +11,13 @@ use App\Seat;
 class SeatController extends Controller
 {
     //
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+
     public function index()
     {
     	return View('admin/seat/index')->withSeats(Seat::all());

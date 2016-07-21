@@ -36,10 +36,12 @@ Route::group(['middleware' => 'web','namespace' => 'Admin','prefix' => 'admin'],
     Route::get('/', 'AdminController@index');
     Route::resource('dish', 'DishController');
     Route::resource('seat','SeatController');
+    Route::resource('type','TypeController');
     Route::get('login', 'AuthController@getLogin');
     Route::post('login', 'AuthController@postLogin');
     Route::get('register', 'AuthController@getRegister');
     Route::post('register', 'AuthController@postRegister');
+    Route::any('logout', 'AdminController@logout');
 });
 
 

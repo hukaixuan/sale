@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Dish;
+use App\Type;
 
 class DishController extends Controller
 {
@@ -24,7 +25,7 @@ class DishController extends Controller
 
     //新建
     public function create(){
-    	return view('admin/dish/create');
+    	return view('admin/dish/create')->withTypes(Type::all());
     }
 
     // 存储
@@ -56,7 +57,7 @@ class DishController extends Controller
 
     //编辑
     public function edit($id){
-    	return view('admin/dish/edit')->withDish(Dish::find($id));
+    	return view('admin/dish/edit')->withDish(Dish::find($id))->withTypes(Type::all());
     }
     public function update(Request $request, $id){
     	$this -> validate($request,[

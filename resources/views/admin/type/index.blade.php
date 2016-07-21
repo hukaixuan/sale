@@ -5,34 +5,33 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">座位管理</div>
+                <div class="panel-heading">菜品分类管理</div>
                 <div class="panel-body">
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             {!! implode('<br>', $errors->all()) !!}
                         </div>
                     @endif
-                    <a href="{{ url('admin/seat/create') }}" class="btn btn-lg btn-primary">新增</a>
+                    <a href="{{ url('admin/type/create') }}" class="btn btn-lg btn-primary">新增</a>
 
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>座号</th>
-                                <th>座名</th>
+                                <th>ID</th>
+                                <th>菜品分类</th>
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($seats as $seat)
                                 <hr>
-                                <div class="seat">
+                        <tbody>
+                            @foreach ($types as $type)
+                                <div class="type">
                                     <div class="content">
                                         <tr>
-                                            <td>{{$seat->id}}</td>
-                                            <td>{{ $seat->name }}</td>
+                                            <td>{{$type->id}}</td>
+                                            <td>{{ $type->name }}</td>
                                             <td>
-                                                <a href="{{ url('admin/seat/'.$seat->id.'/edit') }}" class="btn btn-success">编辑</a>
-                                                <form action="{{ url('admin/seat/'.$seat->id) }}" method="POST" style="display: inline;">
+                                                <form action="{{ url('admin/type/'.$type->id) }}" method="POST" style="display: inline;">
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
                                                     <button type="submit" class="btn btn-danger">删除</button>

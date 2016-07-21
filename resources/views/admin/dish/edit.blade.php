@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -20,13 +20,18 @@
                         {{ csrf_field() }}
                         <input type="text" name="name" class="form-control" required="required" placeholder="请输入菜名" value="{{$dish->name}}">
                         <br>                        
-                        <input type="text" name="type" class="form-control" required="required" placeholder="请选择分类" value="{{$dish->type}}">  <!-- 添加菜品分类表后更改 -->
+                        <!-- <input type="text" name="type" class="form-control" required="required" placeholder="请选择分类" value="{{$dish->type}}">   -->
+                        <select name="type" class="form-control">
+                            @foreach ($types as $type)
+                                <option value="{{$type->name}}">{{$type->name}}</option>
+                            @endforeach
+                        </select>
                         <br>                        
                         <input type="number" name="price" class="form-control" required="required" placeholder="请输入价格" value="{{$dish->price}}">
                         <br>                        
                         <input type="text" name="remark" class="form-control" placeholder="备注" value="{{$dish->remark}}">
                         <br>                       
-                        <input type="file" accpet="image/*" id="img" name="img" class="form-control" placeholder="上传图片" value="{{$dish->img}}">
+                        <div class="form-control">{{$dish->img}}<input type="file" accpet="image/*" id="img" name="img" placeholder="上传图片" value="{{$dish->img}}"></div>
                         <br>   
 
                         <input type="boolean" name="isAvailable" class="form-control" required="required" placeholder="是否有货(1表示有货,0表示无货)" value="{{$dish->isAvailable}}">
