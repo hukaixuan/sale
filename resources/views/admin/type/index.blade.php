@@ -44,6 +44,7 @@
                             
                         </tbody>
                     </table>
+                    {!!$types->links()!!}    <!-- 分页链接 -->
 
                 </div>
             </div>

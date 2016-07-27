@@ -23,8 +23,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($seats as $seat)
                                 <hr>
+                                <hr>
+                                
+                            @foreach ($seats as $seat)
                                 <div class="seat">
                                     <div class="content">
                                         <tr>
@@ -45,6 +47,7 @@
                             
                         </tbody>
                     </table>
+                    {!!$seats->links()!!}    <!-- 分页链接 -->
 
                 </div>
             </div>

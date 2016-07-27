@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Type;
+use Auth;
+use DB;
 
 class TypeController extends Controller
 {
@@ -15,12 +17,14 @@ class TypeController extends Controller
 
     public function index()
     {
-    	return View('admin/type/index')->withTypes(Type::all());
+        //返回指定数量的值，用于分页
+        $types = DB::table('types')->paginate(5);
+    	return View('admin/type/index')->withTypes($types)->withAdmin(Auth::guard('admin')->user());
     }
 
     //新建
     public function create(){
-    	return view('admin/type/create');
+    	return view('admin/type/create')->withAdmin(Auth::guard('admin')->user());
     }
 
     // 存储

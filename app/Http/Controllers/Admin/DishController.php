@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Dish;
 use App\Type;
+use Auth;
+use DB;
 
 class DishController extends Controller
 {
@@ -20,12 +22,13 @@ class DishController extends Controller
 
     public function index()
     {
-    	return View('admin/dish/index')->withDishes(Dish::all());
+        $dishes = DB::table('dishes')->paginate(5);  //分页显示
+    	return View('admin/dish/index')->withDishes($dishes)->withAdmin(Auth::guard('admin')->user());
     }
 
     //新建
     public function create(){
-    	return view('admin/dish/create')->withTypes(Type::all());
+    	return view('admin/dish/create')->withTypes(Type::all())->withAdmin(Auth::guard('admin')->user());
     }
 
     // 存储
@@ -43,10 +46,16 @@ class DishController extends Controller
     	$Dish->isAvailable = $request->get('isAvailable');
         //保存图片
         $img_save = $request->file('img');
-        $filedir = "resources/upload/dish_img/";
-        $image_name=$img_save->getClientOriginalName(); //获取上传图片的文件名
-        $img->move($filedir,$image_name); //使用move 方法移动文件.
-        $Dish->img = $filedir;
+        if (is_null($img_save)) {
+            $Dish->img = '待上传';
+        } else {
+            $filedir = "upload/dish_img/";
+            $image_name=$img_save->getClientOriginalName(); //获取上传图片的文件名
+            $img_save->move($filedir,$image_name); //使用move 方法移动文件.
+            $Dish->img = $filedir.$image_name;
+
+        }
+        
     	if ($Dish->save()) {
     		return redirect('admin/dish');
     	} else{
@@ -57,7 +66,7 @@ class DishController extends Controller
 
     //编辑
     public function edit($id){
-    	return view('admin/dish/edit')->withDish(Dish::find($id))->withTypes(Type::all());
+    	return view('admin/dish/edit')->withDish(Dish::find($id))->withTypes(Type::all())->withAdmin(Auth::guard('admin')->user());
     }
     public function update(Request $request, $id){
     	$this -> validate($request,[
@@ -73,12 +82,18 @@ class DishController extends Controller
     	$Dish->isAvailable = $request->get('isAvailable');
         //保存图片
         $img_save = $request->file('img');
-        // $img_save = $_FILES['img'];
-        $filedir = "upload/dish_img/";
-        $image_name=$img_save->getClientOriginalName(); //获取上传图片的文件名
-        $img_save->move($filedir,$image_name); //使用move 方法移动文件.
-        $Dish->img = $filedir.$image_name;
+        if (is_null($img_save)) {
+            if ($request->get('img')=='待上传') {
+                $Dish->img = '待上传';
+                
+            }
+        } else {
+            $filedir = "upload/dish_img/";
+            $image_name=$img_save->getClientOriginalName(); //获取上传图片的文件名
+            $img_save->move($filedir,$image_name); //使用move 方法移动文件.
+            $Dish->img = $filedir.$image_name;
 
+        }
     	if ($Dish->save()) {
     		return redirect('admin/dish');
     	} else{

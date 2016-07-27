@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Seat;
+use Auth;
+use DB;
 
 class SeatController extends Controller
 {
@@ -20,12 +22,13 @@ class SeatController extends Controller
 
     public function index()
     {
-    	return View('admin/seat/index')->withSeats(Seat::all());
+        $seats = DB::table('seats')->paginate(5);        
+    	return View('admin/seat/index')->withSeats($seats)->withAdmin(Auth::guard('admin')->user());
     }
 
     //新建
     public function create(){
-    	return view('admin/seat/create');
+    	return view('admin/seat/create')->withAdmin(Auth::guard('admin')->user());
     }
 
     // 存储
@@ -48,7 +51,7 @@ class SeatController extends Controller
 
     //编辑
     public function edit($id){
-    	return view('admin/seat/edit')->withSeat(Seat::find($id));
+    	return view('admin/seat/edit')->withSeat(Seat::find($id))->withAdmin(Auth::guard('admin')->user());
     }
     public function update(Request $request, $id){
     	$this -> validate($request,[

@@ -41,7 +41,7 @@ Route::group(['middleware' => 'web','namespace' => 'Admin','prefix' => 'admin'],
     Route::post('login', 'AuthController@postLogin');
     Route::get('register', 'AuthController@getRegister');
     Route::post('register', 'AuthController@postRegister');
-    Route::any('logout', 'AdminController@logout');
+    Route::any('logout', 'AuthController@logout');
 });
 
 
@@ -52,6 +52,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+    Route::get('/menu', 'MenuController@index');
+    Route::get('/checkout', 'CheckoutController@index');
 });
 
 

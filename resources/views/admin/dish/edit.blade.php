@@ -34,13 +34,14 @@
                         <div class="form-control">{{$dish->img}}<input type="file" accpet="image/*" id="img" name="img" placeholder="上传图片" value="{{$dish->img}}"></div>
                         <br>   
 
-                        <input type="boolean" name="isAvailable" class="form-control" required="required" placeholder="是否有货(1表示有货,0表示无货)" value="{{$dish->isAvailable}}">
-                        <br>
-                        <!-- 是否有货
-                        <input type="radio" name="isAvailable" value="1" />有&nbsp;
-                        <input type="radio" name="isAvailable" value="0" />无
-                        <br>
+                        <!-- <input type="boolean" name="isAvailable" class="form-control" required="required" placeholder="是否有货(1表示有货,0表示无货)" value="{{$dish->isAvailable}}">
                         <br> -->
+                        <select name="isAvailable" class="form-control">
+                            <option value="1">有货</option>
+                            <option value="0">无货</option>
+                        </select>
+                        <br>
+                        
                         <button class="btn btn-lg btn-info">提交修改</button>
                     </form>
 

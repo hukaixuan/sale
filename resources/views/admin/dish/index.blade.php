@@ -39,7 +39,11 @@
                                         <td>{{ $dish->price }}</td>
                                         <td>{{ $dish->remark }}</td>
                                         <td>{{ $dish->img }}</td>
-                                        <td>{{ $dish->isAvailable }}</td>
+                                        @if($dish->isAvailable)
+                                            <td>有货</td>
+                                        @else
+                                            <td>无货</td>
+                                        @endif
                                         <td>
                                             <a href="{{ url('admin/dish/'.$dish->id.'/edit') }}" class="btn btn-success">编辑</a>
                                             <form action="{{ url('admin/dish/'.$dish->id) }}" method="POST" style="display: inline;">
@@ -54,7 +58,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    
+                    {!!$dishes->links()!!}    <!-- 分页链接 -->
                         
 
                 </div>
