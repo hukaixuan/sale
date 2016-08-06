@@ -10,8 +10,8 @@ use App\Dish;
 class MenuController extends Controller
 {
     //
-    public function index()	
+    public function index($seat_id)	
     {
-    	return view('menu')->withDishes(Dish::all());
+    	return view('menu',['seat_id'=>$seat_id])->withDishes(Dish::all());
     }
 }
