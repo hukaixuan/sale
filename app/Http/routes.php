@@ -18,8 +18,9 @@ Route::get('/', function(){
 Route::get('welcome/{seat_id}', function ($seat_id) {
     return view('welcome',['seat_id'=>$seat_id]);
 });
-Route::get('test/{num}', function () {
-    return view('test');
+Route::get('test', function () {
+    $data = 0;
+    return view('test',['data',$data]);
 });
 
 
@@ -65,8 +66,10 @@ Route::group(['middleware' => 'web'], function () {
     // Route::get('/checkout/{seat_id}', 'CheckoutController@index');
 
     //购物车相关
-    Route::get('/addDish/{dishId}/{seat_id}', 'OrderController@addDish');
-    Route::get('/removeDish/{id}','OrderController@removeDish');
+    // Route::get('/addDish/{dishId}/{seat_id}', 'OrderController@addDish');
+    Route::post('/addDish', 'OrderController@addDish');
+    // Route::get('/removeDish/{id}','OrderController@removeDish');
+    Route::post('/removeDish','OrderController@removeDish');
     Route::get('/checkout/{seat_id}', 'OrderController@showOrder');
 
     Route::get('/final/{order_id}','FinalOrderController@index');
@@ -74,6 +77,10 @@ Route::group(['middleware' => 'web'], function () {
     //厨房端
     Route::get('/kitchen','KitchenController@index');
     Route::get('/kitchen/accomplish/{kitchenOrder_id}','KitchenController@accomplish');
+
+    //收银端
+    Route::get('/cashier', 'CashierController@index');
+    Route::get('/cashier/checkout/{id}', 'CashierController@checkout');
 });
 
 

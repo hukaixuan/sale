@@ -9,7 +9,7 @@ class Order_dish extends Model
     //
     public function order()
     {
-        return $this->belongsTo('App\Order','id','order_id');  //模型，外键，内键
+        return $this->belongsTo('App\Order','order_id','id');  
     }
 
     public function dish()

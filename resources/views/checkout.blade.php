@@ -33,10 +33,38 @@
 							 <span>Delivered in 1-1:30 hours</span>
 							 <div class="clearfix"></div>
 				        	</div>	 -->
-				        	<a href="/removeDish/{{$orderDish->id}}"> <button type="button" class="btn btn-danger">
+				        	<!-- <a href="/removeDish/{{$orderDish->id}}"> <button type="button" class="btn btn-danger">
                                     <span class="fa fa-remove"></span> 移除
                                 </button>
-                            </a>
+                            </a> -->
+                            <button id="btn{{$orderDish->id}}" type="button" class="btn btn-danger">
+                                    <span class="fa fa-remove"></span> 移除
+                                    <script>
+										$(document).ready(function(){
+										  $("#btn{{$orderDish->id}}").click(function(){
+				    						// alert('添加成功');
+										    $.ajax({
+												type: 'POST',
+												url: '/removeDish',
+												data: { id:{{$orderDish->id}} },
+												dataType: 'json',
+												headers: {
+												'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+												},
+												success: function(data){
+													console.log(data.status);
+													window.location.reload();
+												},
+												error: function(xhr, type){
+												// alert('Ajax error!')
+													window.location.reload();
+												}
+											});
+
+										  });
+										});
+									</script>
+                            </button>
 					   </div>
 					   <div class="clearfix"></div>
 											
@@ -44,7 +72,7 @@
 			 </div>
 			 @endforeach
 			 <div class="cur_right">
-			 	总价：{{$total}} 元
+			 	总价：{{$order->total}} 元
 			 </div>
 			 <a href="/"> 
 			 	<button type="button" class="btn btn-default">

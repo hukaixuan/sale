@@ -1,13 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Menu</title>
+<title>在线点餐</title>
 <link href="{{asset('/resources/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
 <link href="{{asset('/resources/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Curabitur Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="keywords" content="" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <link rel="stylesheet" href="{{asset('/resources/css/flexslider.css')}}" type="text/css" media="screen" />
  <script src="{{asset('/resources/js/jquery-1.11.1.min.js')}}"></script>
@@ -15,6 +14,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <!---- start-smoth-scrolling---->
 <script type="text/javascript" src="{{asset('/resources/js/move-top.js')}}"></script>
 <script type="text/javascript" src="{{asset('/resources/js/easing.js')}}"></script>
+<meta name="_token" content="{{ csrf_token() }}"/>
  <script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$(".scroll").click(function(event){		
@@ -27,6 +27,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- cart -->   
 		<script src="{{asset('/resources/js/simpleCart.min.js')}}"> </script>
 	<!-- cart -->
+
 </head>
 <body>
 		<!-- start-header section-->
@@ -36,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="phone">
 							<ul>
 								<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-								<li><p>ID:{{$seat_id}}</p></li>
+								<li><p>座号:{{$seat_id}}</p></li>
 
 							</ul>
 						</div>
@@ -66,15 +67,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="banner ban1">
 				<div class="container">
 					<div class="top-menu">
-					<span class="menu"><img src="images/nav.png" alt=""/> </span>
+					<span class="menu"><img src="{{asset('resources/images/nav.png')}}" alt=""/> </span>
 						<ul>
-							<li><a  href="/welcome/{{$seat_id}}">home</a></li>
-							<li><a  href="/menu/{{$seat_id}}">menus</a></li>
-							<li><a  href="#">about</a></li>
-							<li><a  href="#">gallery</a></li>
-							<li><a  href="#">events</a></li>
-							<li><a  href="#">contact</a></li>
+							<li><a  href="/welcome/{{$seat_id}}">主页</a></li>
+							<li><a  href="/menu/{{$seat_id}}">菜单</a></li>
+							<li><a  href="#">关于</a></li>
 						</ul>
+						<!-- <a  href="/welcome/{{$seat_id}}">主页</a> &nbsp;
+						<a  href="/menu/{{$seat_id}}">菜单</a> &nbsp;
+						<a  href="#">关于</a> -->
 						<!-- script for menu -->
 									
 							 <script>
@@ -155,5 +156,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	
 </body>
+
 </html>
 	
