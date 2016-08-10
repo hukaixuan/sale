@@ -160,7 +160,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-        Latrell\Alipay\AlipayServiceProvider::class,
+        // Latrell\Alipay\AlipayServiceProvider::class,
 
     ],
 
