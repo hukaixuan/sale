@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\KitchenOrder;
-use App\order_dish;
+use App\Order_dish;
 
 class KitchenController extends Controller
 {
