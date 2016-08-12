@@ -32,6 +32,12 @@
                                         <tr>
                                             <td>{{$seat->id}}</td>
                                             <td>{{ $seat->name }}</td>
+                                            
+                                            <td>
+                                                <a href="{{ url('admin/seat/create_a_qrcode/'.$seat->id) }}" class="btn">
+                                                    生成二维码
+                                                </a>
+                                            </td>
                                             <td>
                                                 <a href="{{ url('admin/seat/'.$seat->id.'/edit') }}" class="btn btn-success">编辑</a>
                                                 <form action="{{ url('admin/seat/'.$seat->id) }}" method="POST" style="display: inline;">
@@ -44,6 +50,10 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                            <a href="{{url('admin/seat/create_qrcodes')}}" class="btn">
+                                生成全部二维码
+                            </a>
                             
                         </tbody>
                     </table>

@@ -162,6 +162,9 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         // Latrell\Alipay\AlipayServiceProvider::class,
 
+        //二维码
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+
     ],
 
     /*
@@ -211,6 +214,7 @@ return [
 
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
 ];

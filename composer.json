@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "gloudemans/shoppingcart": "dev-master",
         "dompdf/dompdf": "^0.7.0",
-        "latrell/alipay": "dev-master"
+        "latrell/alipay": "dev-master",
+        "simplesoftwareio/simple-qrcode": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -45,6 +45,8 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web','namespace' => 'Admin','prefix' => 'admin'], function() {  
     Route::get('/', 'AdminController@index');
     Route::resource('dish', 'DishController');
+    Route::get('seat/create_a_qrcode/{seat_id}','SeatController@create_a_qrcode');
+    Route::get('seat/create_qrcodes','SeatController@create_qrcodes');
     Route::resource('seat','SeatController');
     Route::resource('type','TypeController');
     Route::get('login', 'AuthController@getLogin');

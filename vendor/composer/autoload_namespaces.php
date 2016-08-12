@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Svg\\' => array($vendorDir . '/phenx/php-svg-lib/src'),
+    'SimpleSoftwareIO\\QrCode\\' => array($vendorDir . '/simplesoftwareio/simple-qrcode/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
@@ -15,4 +16,5 @@ return array(
     'FontLib\\' => array($vendorDir . '/phenx/php-font-lib/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
+    'BaconQrCode' => array($vendorDir . '/bacon/bacon-qr-code/src'),
 );
