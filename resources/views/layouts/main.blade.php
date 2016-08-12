@@ -42,12 +42,12 @@
 							</ul>
 						</div>
 						<div class="logo">
-							<h1><a href="index.html">curabitur</a></h1>
+							<h1><a href="#">在线点餐系统</a></h1>
 						</div>
 						<div class="header-right">
-						<div class="login">
+						<!-- <div class="login">
 						<a href="login.html">login</a>
-						</div>
+						</div> -->
 						<div class="cart box_1">
 							<a href="/checkout/{{$seat_id}}">
 								<!-- <h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> items)<img src="{{asset('/resources/images/bag.png')}}" alt=""></h3> -->
