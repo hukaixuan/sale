@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\KitchenOrder;
 use App\Order_dish;
+use Input;
 
 class KitchenController extends Controller
 {
@@ -25,4 +26,43 @@ class KitchenController extends Controller
     	$kitchenOrder->save();
     	return redirect('/kitchen');
     }
+
+    public function refresh()
+    {
+        # code...
+        if(emptyempty(Input::get('time')))
+            exit();
+        set_time_limit(0);
+        while (true) {
+            usleep(500000);
+            # code...
+            // if (KitchenOrder::where('refresh',1)->get()) {
+                # code...
+                $arr=array('success'=>"1",'name'=>'xiaocai','text'=>'hhhh');  
+                return json_encode($arr);  
+            // }
+
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -78,6 +78,7 @@ Route::group(['middleware' => 'web'], function () {
 
     //厨房端
     Route::get('/kitchen','KitchenController@index');
+    Route::post('/kitchen/refresh', 'KitchenController@refresh');
     Route::get('/kitchen/accomplish/{kitchenOrder_id}','KitchenController@accomplish');
 
     //收银端
